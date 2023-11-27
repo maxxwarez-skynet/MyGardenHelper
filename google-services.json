@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "844353965336",
+    "project_id": "mygardenhelper",
+    "storage_bucket": "mygardenhelper.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:844353965336:android:5615c277adee1cf218626d",
+        "android_client_info": {
+          "package_name": "in.co.maxxwarez.mygardenhelper"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "844353965336-uu9ejs3bf6c8m53fbs83l8nr09n1ejp0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "in.co.maxxwarez.mygardenhelper",
+            "certificate_hash": "575a1d2571968f2601298e2b5f5c4aca9101d029"
+          }
+        },
+        {
+          "client_id": "844353965336-br6oha5p183k4sk08i7opkr7ov3v24af.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwpJWzTpiGUNFmZ6Cbf2kRYi7DY7IPUZg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "844353965336-br6oha5p183k4sk08i7opkr7ov3v24af.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

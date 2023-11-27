@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "844353965336",
+    "project_id": "mygardenhelper",
+    "storage_bucket": "mygardenhelper.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:844353965336:android:5615c277adee1cf218626d",
+        "android_client_info": {
+          "package_name": "in.co.maxxwarez.mygardenhelper"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwpJWzTpiGUNFmZ6Cbf2kRYi7DY7IPUZg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
