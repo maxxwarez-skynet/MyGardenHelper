@@ -1,4 +1,4 @@
-package in.co.maxxwarez.mygardenhelper.ui.slideshow;
+package in.co.maxxwarez.mygardenhelper.ui.automation;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

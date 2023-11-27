@@ -16,7 +16,6 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
 import in.co.maxxwarez.mygardenhelper.databinding.ActivityMainBinding;
-import in.co.maxxwarez.mygardenhelper.helperClasses.checkUserRegistrationAsyncTask;
 import in.co.maxxwarez.mygardenhelper.helperClasses.userHelper;
 
 public class MainActivity extends AppCompatActivity {
@@ -42,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         userName.setText(user.getDisplayName());
         userEmail.setText(user.getEmailID());
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow)
+                R.id.nav_home, R.id.nav_devices, R.id.nav_automation)
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);

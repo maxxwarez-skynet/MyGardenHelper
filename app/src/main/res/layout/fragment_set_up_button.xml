@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#5c8acc"
+    tools:context=".ui.setup.SetUpButton">
+
+
+    <Button
+        android:id="@+id/set_up_button"
+        style="@android:style/TextAppearance.Material.Button"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#afe0a4"
+        android:onClick="onClick"
+        app:iconTint="#75b368"
+        android:color="#afe0a4"
+        app:rippleColor="#75b368"
+        app:backgroundTint="#afe0a4"/>
+</FrameLayout>

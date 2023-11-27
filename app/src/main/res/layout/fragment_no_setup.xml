@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:textAlignment="center"
+    tools:context=".ui.setup.NoSetUp">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:id="@+id/noSetUp"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:paddingVertical="20dp"
+        android:text=""
+        android:textAlignment="center"
+        android:textAppearance="@style/ThemeOverlay.Material3"
+        android:textColor="@color/cardview_dark_background"
+        android:textSize="20sp" />
+
+</FrameLayout>

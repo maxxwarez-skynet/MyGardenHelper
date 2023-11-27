@@ -31,7 +31,7 @@ public class getHomeAsyncTask extends AsyncTask<Object, Boolean, String> {
     protected void onPostExecute(String response) {
         super.onPostExecute(response);
         Log.d(TAG, "GetHome: " + response);
-        callerActivity.getHome(response);
+      // callerActivity.getHome(response);
     }
 
     @Override

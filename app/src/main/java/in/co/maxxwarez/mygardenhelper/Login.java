@@ -21,7 +21,7 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import in.co.maxxwarez.mygardenhelper.helperClasses.checkUserRegistrationAsyncTask;
+import in.co.maxxwarez.mygardenhelper.helperClasses.userHelper;
 
 public class Login extends AppCompatActivity implements View.OnClickListener {
 
@@ -58,7 +58,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     public void startIntent(){
 
         initializeDialog("Checking User Registration. Please Wait...");
-        startCheckUserRegistrationTask();
+        startCreateUserTask();
 
 
     }
@@ -120,13 +120,14 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         dialog.show();
     }
 
-    private void startCheckUserRegistrationTask() {
-        final String WEB_SERVICE_URL = "https://checkUserRegistration-chfzbeamua-uc.a.run.app/?userID="+mAuth.getUid();
-        checkUserRegistrationAsyncTask checkUserRegistrationTask= new checkUserRegistrationAsyncTask();
-        checkUserRegistrationTask.execute(WEB_SERVICE_URL,this);
+    private void startCreateUserTask() {
+        final String userID = mAuth.getUid();
+        userHelper.userCreate uc = new userHelper.userCreate();
+        uc.execute(userID, this);
+
     }
 
-    public void checkUserRegistration(String s){
+    public void CreateUserTask(String s){
         dialog.dismiss();
         if(s.equals("true")){
             Intent intent = new Intent(this, MainActivity.class);

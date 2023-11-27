@@ -1,4 +1,4 @@
-package in.co.maxxwarez.mygardenhelper.ui.gallery;
+package in.co.maxxwarez.mygardenhelper.ui.devices;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
