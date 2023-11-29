@@ -1,5 +1,6 @@
 package in.co.maxxwarez.mygardenhelper.ui.home;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,10 +11,11 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import in.co.maxxwarez.mygardenhelper.Login;
 import in.co.maxxwarez.mygardenhelper.databinding.FragmentHomeBinding;
 
 public class HomeFragment extends Fragment {
-
+    ProgressDialog progressDialog;
     private FragmentHomeBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -23,7 +25,6 @@ public class HomeFragment extends Fragment {
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-
         final TextView textView = binding.textHome;
         homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;

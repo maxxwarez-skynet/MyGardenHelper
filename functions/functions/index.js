@@ -28,12 +28,34 @@ exports.getUser = onRequest(async (req, res) => {
         email   : user.email,
         name    : user.displayName
     }
-    const res = await db.collection('users').doc(userID).set(userData);
-
+    const result = await db.collection('users').doc(userID).set(userData);
+    res.json(userData);
   } else {
-    
+    //res.send('true');
+    res.json(doc.data());
   }
-  res.send('true');
+  
+});
+
+exports.checkUser = onRequest(async (req, res) => {
+
+  // Grab the text parameter.
+  const userID = req.query.userID;
+
+  //Get user from Firestore
+  const userRef = db.collection('users').doc(userID);
+  const doc = await userRef.get();
+
+  if (!doc.exists) {
+    res.json({
+      Status : 'false'
+    });
+  } else {
+    res.json({
+      Status : 'true'
+    });
+  }
+  
 });
 
 

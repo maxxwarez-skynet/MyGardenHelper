@@ -1,5 +1,6 @@
 package in.co.maxxwarez.mygardenhelper;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
@@ -17,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import in.co.maxxwarez.mygardenhelper.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
+    ProgressDialog progressDialog;
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
@@ -24,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 

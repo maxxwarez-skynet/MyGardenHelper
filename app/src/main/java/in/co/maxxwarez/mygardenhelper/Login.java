@@ -1,6 +1,8 @@
 package in.co.maxxwarez.mygardenhelper;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -20,6 +22,8 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import in.co.maxxwarez.mygardenhelper.helperClasses.WebServiceAsyncTask;
+
 public class Login extends AppCompatActivity implements View.OnClickListener {
 
     private static final String TAG = "SkyNet";
@@ -27,12 +31,14 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     private FirebaseAuth mAuth;
     private GoogleSignInClient mGoogleSignInClient;
 
+    private static final String WEB_SERVICE_URL = "https://checkuser-chfzbeamua-uc.a.run.app/?userID=CYpYgtRWNTTuNYDbH9jfVZPYXbn2";
+
+    ProgressDialog dialog;
     @Override
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         findViewById(R.id.sign_in).setOnClickListener(this);
-        Log.i(TAG, "firebaseAuthWithGoogle:" + "On Create");
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken("844353965336-br6oha5p183k4sk08i7opkr7ov3v24af.apps.googleusercontent.com")
                 .requestEmail()
@@ -53,10 +59,11 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     }
 
     public void startIntent(){
-        Intent intent = new Intent(this, MainActivity.class);
-        //   userHelper user = new userHelper();
-        //  user.createUser();
-        startActivity(intent);
+
+        initializeDialog();
+        startWebServiceTask();
+        //To-D0: Add progress bar while the user is checked and created.
+
     }
     @Override
     public void onActivityResult (int requestCode, int resultCode, Intent data) {
@@ -77,7 +84,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     }
 
     private void firebaseAuthWithGoogle (GoogleSignInAccount acct) {
-        Log.i(TAG, "firebaseAuthWithGoogle:" + acct.getId());
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -97,7 +103,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     }
 
     private void signIn () {
-        Log.i(TAG, "firebaseAuthWithGoogle:" + "On signIn");
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
 
@@ -111,5 +116,22 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             signIn();
 
         }
+    }
+
+    private void initializeDialog() {
+        dialog = ProgressDialog.show(Login.this, "", "Loading Your Data. Please Wait...", true);
+        dialog.show();
+    }
+
+    private void startWebServiceTask() {
+        WebServiceAsyncTask webServiceTask = new WebServiceAsyncTask();
+        webServiceTask.execute(WEB_SERVICE_URL,this);
+    }
+
+    public void updateUser(String s){
+
+        dialog.dismiss();
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }
