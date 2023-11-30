@@ -37,7 +37,7 @@ exports.getUser = onRequest(async (req, res) => {
   
 });
 
-exports.checkUser = onRequest(async (req, res) => {
+exports.checkUseRegistration = onRequest(async (req, res) => {
 
   // Grab the text parameter.
   const userID = req.query.userID;
@@ -47,15 +47,38 @@ exports.checkUser = onRequest(async (req, res) => {
   const doc = await userRef.get();
 
   if (!doc.exists) {
-    res.json({
-      Status : 'false'
-    });
+    const user = await getAuth().getUser(userID);
+    const userData = {
+        email   : user.email,
+        name    : user.displayName
+    }
+    const result = await db.collection('users').doc(userID).set(userData);
+    res.send('true')
   } else {
-    res.json({
-      Status : 'true'
-    });
+    res.send('true')
   }
   
 });
 
+
+exports.createUserRegistration = onRequest(async (req, res) => {
+
+  // Grab the text parameter.
+  //const userID = req.body;
+
+/*   //Get user from Firestore
+  const userRef = db.collection('users').doc(userID);
+  const doc = await userRef.get();
+
+  if (!doc.exists) {
+    const user = await getAuth().getUser(userID);
+    const userData = {
+        email   : user.email,
+        name    : user.displayName
+    }
+    const result = await db.collection('users').doc(userID).set(userData);
+    res.json(userData);
+  }  */
+  res.send("odfd");
+});
 

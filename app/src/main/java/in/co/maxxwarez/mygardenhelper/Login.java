@@ -2,7 +2,6 @@ package in.co.maxxwarez.mygardenhelper;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -22,7 +21,7 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import in.co.maxxwarez.mygardenhelper.helperClasses.WebServiceAsyncTask;
+import in.co.maxxwarez.mygardenhelper.helperClasses.checkUserRegistrationAsyncTask;
 
 public class Login extends AppCompatActivity implements View.OnClickListener {
 
@@ -30,8 +29,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     private static final int RC_SIGN_IN = 9001;
     private FirebaseAuth mAuth;
     private GoogleSignInClient mGoogleSignInClient;
-
-    private static final String WEB_SERVICE_URL = "https://checkuser-chfzbeamua-uc.a.run.app/?userID=CYpYgtRWNTTuNYDbH9jfVZPYXbn2";
 
     ProgressDialog dialog;
     @Override
@@ -60,9 +57,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
     public void startIntent(){
 
-        initializeDialog();
-        startWebServiceTask();
-        //To-D0: Add progress bar while the user is checked and created.
+        initializeDialog("Checking User Registration. Please Wait...");
+        startCheckUserRegistrationTask();
+
 
     }
     @Override
@@ -118,20 +115,25 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         }
     }
 
-    private void initializeDialog() {
-        dialog = ProgressDialog.show(Login.this, "", "Loading Your Data. Please Wait...", true);
+    private void initializeDialog(String message) {
+        dialog = ProgressDialog.show(Login.this, "", message, true);
         dialog.show();
     }
 
-    private void startWebServiceTask() {
-        WebServiceAsyncTask webServiceTask = new WebServiceAsyncTask();
-        webServiceTask.execute(WEB_SERVICE_URL,this);
+    private void startCheckUserRegistrationTask() {
+        final String WEB_SERVICE_URL = "https://checkUseRegistration-chfzbeamua-uc.a.run.app/?userID="+mAuth.getUid();
+        checkUserRegistrationAsyncTask checkUserRegistrationTask= new checkUserRegistrationAsyncTask();
+        checkUserRegistrationTask.execute(WEB_SERVICE_URL,this);
     }
 
-    public void updateUser(String s){
-
+    public void checkUserRegistration(String s){
         dialog.dismiss();
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+        if(s.equals("true")){
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        }
+        else{
+            Log.i(TAG, "Login: User not registered" + s);
+        }
     }
 }
