@@ -5,18 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#5c8acc"
-    tools:context=".ui.commons.SetUpButton">
-
+    tools:context=".ui.automation.AutomationSetupButton">
 
     <Button
-        android:id="@+id/set_up_button"
+        android:id="@+id/set_up_button_automation"
         style="@android:style/Widget.Holo.Button.Borderless"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#5c8acc"
-        android:onClick="onClick"
-        app:iconTint="#5c8acc"
         android:color="#5c8acc"
-        app:rippleColor="#c71e34"
-        app:backgroundTint="#5c8acc"/>
+        android:onClick="onClick"
+        app:backgroundTint="#5c8acc"
+        app:iconTint="#5c8acc"
+        app:rippleColor="#c71e34" />
 </FrameLayout>

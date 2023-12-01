@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:textAlignment="center"
-    tools:context=".ui.setup.NoSetUp">
+    tools:context=".ui.commons.NoSetUp">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
@@ -14,8 +14,8 @@
         android:paddingVertical="20dp"
         android:text=""
         android:textAlignment="center"
-        android:textAppearance="@style/ThemeOverlay.Material3"
-        android:textColor="@color/cardview_dark_background"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display4"
+        android:textColor="@color/white"
         android:textSize="20sp" />
 
 </FrameLayout>
