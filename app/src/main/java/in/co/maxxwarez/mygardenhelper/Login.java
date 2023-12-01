@@ -121,7 +121,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     }
 
     private void startCheckUserRegistrationTask() {
-        final String WEB_SERVICE_URL = "https://checkUseRegistration-chfzbeamua-uc.a.run.app/?userID="+mAuth.getUid();
+        final String WEB_SERVICE_URL = "https://checkUserRegistration-chfzbeamua-uc.a.run.app/?userID="+mAuth.getUid();
         checkUserRegistrationAsyncTask checkUserRegistrationTask= new checkUserRegistrationAsyncTask();
         checkUserRegistrationTask.execute(WEB_SERVICE_URL,this);
     }

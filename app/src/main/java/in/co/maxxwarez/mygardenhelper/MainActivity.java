@@ -4,8 +4,8 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
+import android.widget.TextView;
 
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.navigation.NavController;
@@ -16,12 +16,13 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
 import in.co.maxxwarez.mygardenhelper.databinding.ActivityMainBinding;
+import in.co.maxxwarez.mygardenhelper.helperClasses.checkUserRegistrationAsyncTask;
+import in.co.maxxwarez.mygardenhelper.helperClasses.userHelper;
 
 public class MainActivity extends AppCompatActivity {
-    ProgressDialog progressDialog;
-
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
+    ProgressDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +33,14 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(binding.appBarMain.toolbar);
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
+        View headerView = navigationView.getHeaderView(0);
+        TextView userName = headerView.findViewById(R.id.userName);
+        TextView userEmail = headerView.findViewById(R.id.userEmail);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
+        userHelper user = new userHelper();
+        userName.setText(user.getDisplayName());
+        userEmail.setText(user.getEmailID());
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow)
                 .setOpenableLayout(drawer)
