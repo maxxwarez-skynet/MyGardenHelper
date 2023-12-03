@@ -15,7 +15,7 @@ public class homeHelper {
 
     private static final String TAG = "SkyNet";
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-    final DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+    final DatabaseReference ref = FirebaseDatabase.getInstance("https://mygardenhelper.firebaseio.com").getReference();
 
     public String name;
     public String userID;

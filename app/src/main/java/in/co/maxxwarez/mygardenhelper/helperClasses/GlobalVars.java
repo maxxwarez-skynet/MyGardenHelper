@@ -17,7 +17,7 @@ public class GlobalVars extends Application {
 
     private static final String TAG = "SkyNet";
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-    final DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+    final DatabaseReference ref = FirebaseDatabase.getInstance("https://mygardenhelper.firebaseio.com").getReference();
 
     public GlobalVars() {
 

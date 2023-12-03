@@ -262,7 +262,7 @@ public class SetUpButton extends Fragment implements View.OnClickListener {
         @Override
         protected String doInBackground (String... strings) {
 
-            final DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+            final DatabaseReference ref = FirebaseDatabase.getInstance("https://mygardenhelper.firebaseio.com").getReference();
             String userID = user.getUid();
             homeHelper home = new homeHelper(homeName, userID, 0);
             //ref.child("homes").push().setValue(home);
