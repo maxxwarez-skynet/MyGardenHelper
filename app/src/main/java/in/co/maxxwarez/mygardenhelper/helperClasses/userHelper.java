@@ -1,4 +1,5 @@
 package in.co.maxxwarez.mygardenhelper.helperClasses;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -39,6 +40,8 @@ public class userHelper {
     public String getDisplayName () {
         return user.getDisplayName();
     }
+
+    public Uri getUserImage(){return user.getPhotoUrl();}
 
     public HashMap getHome(){ return getUser();}
 
@@ -83,12 +86,10 @@ public class userHelper {
             String userID = (String) params[0];
             callerActivity = (Login) params[1];
             Query query = ref.child("users").child(user.getUid());
-            Log.i(TAG, "Login03: " + query);
             query.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     if (!dataSnapshot.exists()){
-                        Log.i(TAG, "Login04: ");
                         ref.child("users").child(user.getUid()).child("displayName").setValue(user.getDisplayName());
                         ref.child("users").child(user.getUid()).child("email").setValue(user.getEmail());
 

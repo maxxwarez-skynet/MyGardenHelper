@@ -4,7 +4,7 @@
     android:id="@+id/main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blue_grey_700"
+    android:background="@color/green_02"
     android:orientation="vertical"
     android:weightSum="4"
     tools:context=".Login">
@@ -33,11 +33,15 @@
 
         <ImageView
             android:id="@+id/google_icon"
-            android:layout_width="0dp"
-            android:layout_height="274dp"
-            android:contentDescription="@string/desc_google_icon"
-            tools:layout_editor_absoluteX="206dp"
-            tools:layout_editor_absoluteY="100dp" />
+            android:layout_width="150dp"
+            android:layout_height="172dp"
+            android:layout_marginStart="130dp"
+            android:layout_marginTop="188dp"
+            android:layout_marginEnd="131dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/fui_ic_googleg_color_24dp" />
 
         <TextView
             android:id="@+id/title_text"
@@ -49,7 +53,7 @@
             android:layout_marginBottom="384dp"
             android:gravity="center"
             android:text="@string/title_text"
-            android:textColor="@android:color/white"
+            android:textColor="@color/blue_grey_700"
             android:textSize="26sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

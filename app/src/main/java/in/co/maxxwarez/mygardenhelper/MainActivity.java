@@ -1,11 +1,17 @@
 package in.co.maxxwarez.mygardenhelper;
 
+import static android.provider.ContactsContract.CommonDataKinds.Website.URL;
+
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.navigation.NavController;
@@ -19,6 +25,8 @@ import in.co.maxxwarez.mygardenhelper.databinding.ActivityMainBinding;
 import in.co.maxxwarez.mygardenhelper.helperClasses.userHelper;
 
 public class MainActivity extends AppCompatActivity {
+
+    private static final String TAG = "SkyNet";
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
     ProgressDialog dialog;
@@ -35,11 +43,23 @@ public class MainActivity extends AppCompatActivity {
         View headerView = navigationView.getHeaderView(0);
         TextView userName = headerView.findViewById(R.id.userName);
         TextView userEmail = headerView.findViewById(R.id.userEmail);
+        ImageView userImage = headerView.findViewById(R.id.userImage);
+        //ImageView userImage = headerView.findViewById(R.id.userImage);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
+
         userHelper user = new userHelper();
         userName.setText(user.getDisplayName());
         userEmail.setText(user.getEmailID());
+        Log.i(TAG, "GoogleImageUI");
+
+  /*      Glide.with(this)
+                .load(user.getUserImage())
+                .diskCacheStrategy(DiskCacheStrategy.NONE)
+                .skipMemoryCache(true)
+                .into(userImage);*/
+
+
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_devices, R.id.nav_automation)
                 .setOpenableLayout(drawer)

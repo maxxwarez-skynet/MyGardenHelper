@@ -40,9 +40,7 @@ public class HomeFragment extends Fragment {
                               ViewGroup container, Bundle savedInstanceState) {
         userHelper userHelper = new userHelper();
         userHelper.getUser();
-        GlobalVars globalVars = new GlobalVars();
-        globalVars.getUserObject();
-        Log.i(TAG, "Home Frag " + query);
+        Log.i(TAG, "Home Frag " + ref);
 
        // getHome getHome = new getHome();
       //  Log.i(TAG, "Home Frag 2 " + getHome.execute());

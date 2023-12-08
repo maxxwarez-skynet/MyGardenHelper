@@ -42,6 +42,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 .build();
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
         mAuth = FirebaseAuth.getInstance();
+        Log.i(TAG, "onCreate");
 
     }
 
@@ -49,14 +50,15 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     @Override
     public void onStart () {
         super.onStart();
+        Log.i(TAG, "onStart");
         if (mAuth.getCurrentUser() != null) {
-            startIntent();
+          //  startIntent();
         }
 
     }
 
     public void startIntent(){
-
+        Log.i(TAG, "StartIntent");
         initializeDialog("Checking User Registration. Please Wait...");
         startCreateUserTask();
 
@@ -89,7 +91,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.i(TAG, "signInWithCredential:success");
-                            startIntent();
+                            //startIntent();
 
                         } else {
                             // If sign in fails, display a message to the user.
@@ -128,10 +130,10 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     }
 
     public void CreateUserTask(String s){
-        dialog.dismiss();
+      //  dialog.dismiss();
         if(s.equals("true")){
             Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
+         //   startActivity(intent);
         }
         else{
             Log.i(TAG, "Login: User not registered" + s);
