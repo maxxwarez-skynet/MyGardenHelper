@@ -1,5 +1,6 @@
 package in.co.maxxwarez.mygardenhelper;
 
+
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -30,7 +31,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     private FirebaseAuth mAuth;
     private GoogleSignInClient mGoogleSignInClient;
 
-    ProgressDialog dialog;
+    ProgressDialog progressDialog;
     @Override
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +43,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 .build();
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
         mAuth = FirebaseAuth.getInstance();
-        Log.i(TAG, "onCreate");
 
     }
 
@@ -50,19 +50,17 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     @Override
     public void onStart () {
         super.onStart();
-        Log.i(TAG, "onStart");
         if (mAuth.getCurrentUser() != null) {
-          //  startIntent();
+              startIntent();
         }
 
     }
 
     public void startIntent(){
-        Log.i(TAG, "StartIntent");
-        initializeDialog("Checking User Registration. Please Wait...");
-        startCreateUserTask();
-
-
+        Intent intent = new Intent(this, MainActivity.class);
+        userHelper user = new userHelper();
+        user.createUser();
+       // startActivity(intent);
     }
     @Override
     public void onActivityResult (int requestCode, int resultCode, Intent data) {
@@ -91,7 +89,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.i(TAG, "signInWithCredential:success");
-                            //startIntent();
+                             startIntent();
 
                         } else {
                             // If sign in fails, display a message to the user.
@@ -110,33 +108,11 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     @Override
     public void onClick (View v) {
 
+
         int i = v.getId();
         if (i == R.id.sign_in) {
             signIn();
 
-        }
-    }
-
-    private void initializeDialog(String message) {
-        dialog = ProgressDialog.show(Login.this, "", message, true);
-        dialog.show();
-    }
-
-    private void startCreateUserTask() {
-        final String userID = mAuth.getUid();
-        userHelper.userCreate uc = new userHelper.userCreate();
-        uc.execute(userID, this);
-
-    }
-
-    public void CreateUserTask(String s){
-      //  dialog.dismiss();
-        if(s.equals("true")){
-            Intent intent = new Intent(this, MainActivity.class);
-         //   startActivity(intent);
-        }
-        else{
-            Log.i(TAG, "Login: User not registered" + s);
         }
     }
 }

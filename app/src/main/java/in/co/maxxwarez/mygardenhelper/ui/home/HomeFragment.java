@@ -40,8 +40,6 @@ public class HomeFragment extends Fragment {
                               ViewGroup container, Bundle savedInstanceState) {
         userHelper userHelper = new userHelper();
         userHelper.getUser();
-        Log.i(TAG, "Home Frag " + ref);
-
        // getHome getHome = new getHome();
       //  Log.i(TAG, "Home Frag 2 " + getHome.execute());
 
@@ -54,12 +52,9 @@ public class HomeFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()){
                     homeSet();
-                    Log.i(TAG, "Home Frag " + "0");
-
                 }
                 else
                 {
-                    Log.i(TAG, "Home Frag " + "1");
                     noHomeSet();
                 }
             }

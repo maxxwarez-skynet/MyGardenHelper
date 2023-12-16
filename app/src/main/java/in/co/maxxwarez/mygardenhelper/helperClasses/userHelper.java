@@ -83,6 +83,7 @@ public class userHelper {
 
         @Override
         protected String doInBackground(Object... params) {
+            Log.i(TAG, "doInBackground");
             String userID = (String) params[0];
             callerActivity = (Login) params[1];
             Query query = ref.child("users").child(user.getUid());
@@ -107,7 +108,7 @@ public class userHelper {
 
         protected void onPostExecute(String response) {
             super.onPostExecute(response);
-            callerActivity.CreateUserTask(response);
+          //  callerActivity.CreateUserTask(response);
         }
 
         @Override
@@ -115,8 +116,24 @@ public class userHelper {
 
             super.onPreExecute();
         }
+    }
 
+    public void createUser () {
+        Query query = ref.child("users").child(this.getUID());
 
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (!dataSnapshot.exists()){
+                    ref.child("users").child(user.getUid()).child("name").setValue(user.getDisplayName());
+                    ref.child("users").child(user.getUid()).child("email").setValue(user.getEmail());
+                }
+            }
 
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 }
